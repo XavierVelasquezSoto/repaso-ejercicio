@@ -112,7 +112,9 @@ const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const specialCharacters = "!@#$%^&*()-_=+[]{}|;:,.<>?";
 
 const checkPassword = () => {
-  inputPasswordElement.value.length = "";
+  //   inputPasswordElement.value = "";
+  listElement.textContent = "";
+  console.log(listElement);
   fragment = document.createDocumentFragment();
 
   const newCharacters = document.createElement("li");
@@ -129,7 +131,7 @@ const checkPassword = () => {
 
   fragment.append(newCharacters, newUppercase, newNumbers, newSpecialCharacter);
   listElement.append(fragment);
-  console.log(fragment);
+  //   console.log(fragment);
 };
 
 inputPasswordElement.addEventListener("input", checkPassword);
