@@ -111,6 +111,25 @@ const numbers = "123567890";
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const specialCharacters = "!@#$%^&*()-_=+[]{}|;:,.<>?";
 
-const checkPassword = () => {};
+const checkPassword = () => {
+  inputPasswordElement.value.length = "";
+  fragment = document.createDocumentFragment();
+
+  const newCharacters = document.createElement("li");
+  newCharacters.textContent = "El texto tiene 0 caracteres";
+
+  const newUppercase = document.createElement("li");
+  newUppercase.textContent = `El texto tiene 0 mayúsculas`;
+
+  const newNumbers = document.createElement("li");
+  newNumbers.textContent = `El texto tiene 0 números`;
+
+  const newSpecialCharacter = document.createElement("li");
+  newSpecialCharacter.textContent = `El texto tiene 0 caracteres especiales.`;
+
+  fragment.append(newCharacters, newUppercase, newNumbers, newSpecialCharacter);
+  listElement.append(fragment);
+  console.log(fragment);
+};
 
 inputPasswordElement.addEventListener("input", checkPassword);
