@@ -111,20 +111,31 @@ const numbers = "123567890";
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const specialCharacters = "!@#$%^&*()-_=+[]{}|;:,.<>?";
 
+const amountNumbers = (passwordValue) => {
+  let counterCharacter = 0;
+
+  listElement.textContent = counterCharacter++;
+};
+
+/* const amountUppercase =() {}
+
+const amountSpecialCharacters = () {} */
+
 const checkPassword = () => {
-  //   inputPasswordElement.value = "";
+  // console.log(listElement);
+
   listElement.textContent = "";
-  console.log(listElement);
+
   fragment = document.createDocumentFragment();
 
   const newCharacters = document.createElement("li");
-  newCharacters.textContent = "El texto tiene 0 caracteres";
+  newCharacters.textContent = `El texto tiene 0 caracteres.`;
 
   const newUppercase = document.createElement("li");
-  newUppercase.textContent = `El texto tiene 0 mayúsculas`;
+  newUppercase.textContent = `El texto tiene 0 mayúsculas.`;
 
   const newNumbers = document.createElement("li");
-  newNumbers.textContent = `El texto tiene 0 números`;
+  newNumbers.textContent = `El texto tiene 0 números.`;
 
   const newSpecialCharacter = document.createElement("li");
   newSpecialCharacter.textContent = `El texto tiene 0 caracteres especiales.`;
