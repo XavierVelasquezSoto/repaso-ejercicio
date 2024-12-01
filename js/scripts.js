@@ -117,7 +117,11 @@ const amountNumbersCharacter = (userpassword) => {
 
   if (userpassword.length > 5) {
     newCharacters.classList.add("ok-color");
-  } else if (userpassword.length >= 1) {
+  }
+  // else if (userpassword.length >= 1) {
+  //   newCharacters.classList.add("error-color");
+  // }  si quiero 3 colores diferentes, para error es posible
+  else {
     newCharacters.classList.add("error-color");
   }
   return newCharacters;
