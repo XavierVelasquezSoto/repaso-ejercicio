@@ -111,38 +111,108 @@ const numbers = "123567890";
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const specialCharacters = "!@#$%^&*()-_=+[]{}|;:,.<>?";
 
-const amountNumbers = (passwordValue) => {
-  let counterCharacter = 0;
+const amountNumbersCharacter = (userpassword) => {
+  const newCharacters = document.createElement("li");
+  newCharacters.textContent = `El texto tiene ${userpassword.length} caracteres.`;
 
-  listElement.textContent = counterCharacter++;
+  if (userpassword.length > 5) {
+    newCharacters.classList.add("ok-color");
+  } else if (userpassword.length >= 1) {
+    newCharacters.classList.add("error-color");
+  }
+  return newCharacters;
+};
+const amountUppercase = (userpassword) => {
+  let amountCounter = 0;
+
+  for (const numberOfLetters of userpassword) {
+    if (uppercase.includes(numberOfLetters)) {
+      amountCounter++;
+    }
+  }
+
+  const newUppercase = document.createElement("li");
+  newUppercase.textContent = `El password tiene ${amountCounter} mayúsculas .`;
+
+  if (amountCounter > 0) {
+    newUppercase.classList.add("ok-color");
+  } else {
+    newUppercase.classList.add("error-color");
+  }
+
+  return newUppercase;
 };
 
-/* const amountUppercase =() {}
+const amountNumbers = (userpassword) => {
+  let amountNumbersCounter = 0;
 
-const amountSpecialCharacters = () {} */
+  for (const amountNumbers of userpassword) {
+    if (numbers.includes(amountNumbers)) {
+      amountNumbersCounter++;
+    }
+  }
 
-const checkPassword = () => {
+  const newNumbers = document.createElement("li");
+  newNumbers.textContent = `El texto tiene ${amountNumbersCounter} números.`;
+
+  if (amountNumbersCounter >= 1) {
+    newNumbers.classList.add("ok-color");
+  } else {
+    newNumbers.classList.add("error-color");
+  } // puede hacerse con if los colores o con roostyle
+
+  return newNumbers;
+};
+
+const amountSpecialCharacters = (userpassword) => {
+  let amountCharactersCounter = 0;
+
+  for (const amountCharacters of userpassword) {
+    if (specialCharacters.includes(amountCharacters)) {
+      amountCharactersCounter++;
+    }
+  }
+
+  const newSpecialCharacter = document.createElement("li");
+  newSpecialCharacter.textContent = `El texto tiene ${amountCharactersCounter} caracteres especiales..`;
+
+  if (amountCharactersCounter >= 2) {
+    newSpecialCharacter.classList.add("ok-color");
+  } else {
+    newSpecialCharacter.classList.add("error-color");
+  } // puede hacerse con if los colores o con roostyle
+
+  return newSpecialCharacter;
+};
+
+const addPassword = (userpassword) => {
   // console.log(listElement);
 
   listElement.textContent = "";
 
   fragment = document.createDocumentFragment();
 
-  const newCharacters = document.createElement("li");
-  newCharacters.textContent = `El texto tiene 0 caracteres.`;
+  const passwordCharacter = amountNumbersCharacter(userpassword);
 
-  const newUppercase = document.createElement("li");
-  newUppercase.textContent = `El texto tiene 0 mayúsculas.`;
+  const passwordUpperCase = amountUppercase(userpassword);
 
-  const newNumbers = document.createElement("li");
-  newNumbers.textContent = `El texto tiene 0 números.`;
+  const passwordNumbers = amountNumbers(userpassword);
 
-  const newSpecialCharacter = document.createElement("li");
-  newSpecialCharacter.textContent = `El texto tiene 0 caracteres especiales.`;
+  const passwordSpecialCharacters = amountSpecialCharacters(userpassword);
 
-  fragment.append(newCharacters, newUppercase, newNumbers, newSpecialCharacter);
+  fragment.append(
+    passwordCharacter,
+    passwordUpperCase,
+    passwordNumbers,
+    passwordSpecialCharacters
+  );
   listElement.append(fragment);
   //   console.log(fragment);
+};
+
+const checkPassword = (event) => {
+  userpassword = event.target.value;
+  addPassword(userpassword);
 };
 
 inputPasswordElement.addEventListener("input", checkPassword);

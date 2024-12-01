@@ -28,3 +28,11 @@ body {
   font-family: sans-serif;
   background-color: blanchedalmond;
 }
+
+.ok-color {
+  color: green;
+}
+
+.error-color {
+  color: red;
+}
